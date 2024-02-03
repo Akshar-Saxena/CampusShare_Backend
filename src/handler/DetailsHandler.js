@@ -1,9 +1,9 @@
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../constants/firebase.js";
 
-let flag = false;
-let email, username;
 const DetailsHandler = async (data) => {
+    let flag = false;
+    let email, username;
     const users = await getDocs(collection(db, "users"));
     users.forEach((element) => {
         if (element.data().id == data.id) {

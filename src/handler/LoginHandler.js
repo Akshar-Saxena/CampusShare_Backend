@@ -1,9 +1,9 @@
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../constants/firebase.js";
 
-let flag = false;
-let email, username, token;
 const LoginHandler = async (data) => {
+    let flag = false;
+    let email, username, token;
     const users = await getDocs(collection(db, "users"));
     users.forEach((element) => {
         if (
@@ -16,9 +16,7 @@ const LoginHandler = async (data) => {
             token = element.data().id;
         }
     });
-    return flag
-        ? { email: email, username: username, token: token }
-        : { message: "Invalid Username or Password" };
+    return { email: email, username: username, token: token };
 };
 
 export { LoginHandler };

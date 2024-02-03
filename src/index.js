@@ -16,8 +16,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post("/login", async (req, res) => {
     const data = req.body;
-    const response = await LoginHandler(data);
-    res.json(response);
+    let response = await LoginHandler(data);
+    console.log(response.email);
+    if (response.email != undefined) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json({ message: "Invalid Email Or Password" });
+    }
 });
 
 app.post("/signup", async (req, res) => {
