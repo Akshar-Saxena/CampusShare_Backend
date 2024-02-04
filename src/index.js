@@ -28,7 +28,11 @@ app.post("/login", async (req, res) => {
 app.post("/signup", async (req, res) => {
     const data = req.body;
     const response = await SignUpHandler(data);
-    res.json(response);
+    if (Object.keys(response).length == 3) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json({ message: "Email Already Exists" });
+    }
 });
 
 app.get("/allItems", async (req, res) => {
@@ -39,7 +43,11 @@ app.get("/allItems", async (req, res) => {
 app.post("/details", async (req, res) => {
     const data = req.body;
     const response = await DetailsHandler(data);
-    res.json(response);
+    if (Object.keys(response).length == 2) {
+        res.status(200).json(response);
+    } else {
+        res.status(404).json(response);
+    }
 });
 
 app.post("/upload", async (req, res) => {
