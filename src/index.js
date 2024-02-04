@@ -9,7 +9,7 @@ import { UploadHandler } from "./handler/UploadHandler.js";
 const app = express();
 app.use(
     cors({
-        origin: "*",
+        origin: "https://symbiosis-swap-shop.vercel.app",
     })
 );
 app.use(express.json());
