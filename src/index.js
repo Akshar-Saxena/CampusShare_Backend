@@ -17,7 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/login", async (req, res) => {
     const data = req.body;
     let response = await LoginHandler(data);
-    console.log(response.email);
     if (response.email != undefined) {
         res.status(200).json(response);
     } else {
