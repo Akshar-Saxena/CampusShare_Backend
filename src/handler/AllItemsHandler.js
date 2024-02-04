@@ -3,7 +3,7 @@ import { db } from "../constants/firebase.js";
 
 const AllItemsHandler = async () => {
     try {
-        const allBooks = await getDocs(collection(db, "books"));
+        const allBooks = await getDocs(collection(db, "items"));
         const books = [];
         allBooks.forEach((element) => {
             books.push(element.data());
