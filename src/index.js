@@ -45,11 +45,7 @@ app.get("/allItems", async (req, res) => {
 app.post("/details", async (req, res) => {
     const data = req.body;
     const response = await DetailsHandler(data);
-    if (Object.keys(response).length == 2) {
-        res.status(200).json(response);
-    } else {
-        res.status(404).json(response);
-    }
+    res.json(response);
 });
 
 app.post("/upload", async (req, res) => {
