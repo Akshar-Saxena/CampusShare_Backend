@@ -5,6 +5,7 @@ import { SignUpHandler } from "./handler/SignUpHandler.js";
 import { AllItemsHandler } from "./handler/AllItemsHandler.js";
 import { DetailsHandler } from "./handler/DetailsHandler.js";
 import { UploadHandler } from "./handler/UploadHandler.js";
+import { FilterItemsHandler } from "./handler/FilterItemsHandler.js";
 
 const app = express();
 app.use(
@@ -56,6 +57,12 @@ app.post("/upload", async (req, res) => {
     } else {
         res.status(404).json({ message: "Error uploading" });
     }
+});
+
+app.post("/search", async (req, res) => {
+    const data = req.body;
+    const response = await FilterItemsHandler(data);
+    res.json(response);
 });
 
 app.listen(3000, () => {
