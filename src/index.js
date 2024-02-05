@@ -8,6 +8,7 @@ import { UploadHandler } from "./handler/UploadHandler.js";
 import { FilterItemsHandler } from "./handler/FilterItemsHandler.js";
 import { EmailHandler } from "./handler/EmailHandler.js";
 import { OTPHandler } from "./handler/OTPHandler.js";
+import { MyItemsHandler } from "./handler/MyItemsHandler.js";
 
 const app = express();
 app.use(
@@ -76,6 +77,12 @@ app.post("/otp", async (req, res) => {
 app.post("/search", async (req, res) => {
     const data = req.body;
     const response = await FilterItemsHandler(data);
+    res.json(response);
+});
+
+app.post("/myitems", async (req, res) => {
+    const data = req.body;
+    const response = await MyItemsHandler(data);
     res.json(response);
 });
 
