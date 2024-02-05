@@ -6,6 +6,8 @@ import { AllItemsHandler } from "./handler/AllItemsHandler.js";
 import { DetailsHandler } from "./handler/DetailsHandler.js";
 import { UploadHandler } from "./handler/UploadHandler.js";
 import { FilterItemsHandler } from "./handler/FilterItemsHandler.js";
+import { EmailHandler } from "./handler/EmailHandler.js";
+import { OTPHandler } from "./handler/OTPHandler.js";
 
 const app = express();
 app.use(
@@ -57,6 +59,18 @@ app.post("/upload", async (req, res) => {
     } else {
         res.status(404).json({ message: "Error uploading" });
     }
+});
+
+app.post("/email", async (req, res) => {
+    const data = req.body;
+    const response = await EmailHandler(data);
+    res.json(response);
+});
+
+app.post("/otp", async (req, res) => {
+    const data = req.body;
+    const response = await OTPHandler(data);
+    res.json(response);
 });
 
 app.post("/search", async (req, res) => {
