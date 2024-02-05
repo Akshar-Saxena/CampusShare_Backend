@@ -19,7 +19,7 @@ const OTPHandler = async (data) => {
             <br><p><strong>Your One-Time Password (OTP): ${otp}</strong></p><br>
             <p>Please enter this OTP in the designated field on our website to confirm your identity and gain access to your account.</p>
             <p>If you did not attempt to register for an account with Symbiosis SwapShop, please disregard this email. Your account security is important to us, and we recommend not sharing this OTP with anyone.</p>
-            <p>If you have any questions or need further assistance, please don't hesitate to contact our support team at <a href="mailto:support@example.com">support@example.com</a>.</p>
+            <p>If you have any questions or need further assistance, please don't hesitate to contact our support team at <a href="mailto:symbiosisswapshop@gmail.com">symbiosisswapshop@gmail.com</a>.</p>
             <p>Thank you for choosing Symbiosis SwapShop.</p>
             <p>Sincerely,</p><br>
             <p>Team Pawsibilities<br>
