@@ -13,8 +13,7 @@ import { MyItemsHandler } from "./handler/MyItemsHandler.js";
 const app = express();
 app.use(
     cors({
-        // origin: "https://symbiosis-swap-shop.vercel.app",
-        origin: "*",
+        origin: "https://symbiosis-swap-shop.vercel.app",
     })
 );
 
