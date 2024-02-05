@@ -5,7 +5,7 @@ const EmailHandler = async (data) => {
         service: "gmail",
         auth: {
             user: "symbiosisswapshop@gmail.com",
-            pass: process.env.PASS,
+            pass: "lzedbwvsloeilbnn",
         },
     });
     try {
@@ -17,6 +17,7 @@ const EmailHandler = async (data) => {
         });
         return { message: "Sent Successfully" };
     } catch (e) {
+        console.log(e);
         return { message: "Error Sending Email" };
     }
 };
