@@ -1,5 +1,6 @@
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../constants/firebase.js";
+import bcrypt from "bcryptjs";
 
 const LoginHandler = async (data) => {
     let flag = false;
@@ -20,7 +21,11 @@ const LoginHandler = async (data) => {
     } catch (e) {
         return { message: "Invalid Format" };
     }
-    return { email: email, username: username, token: token };
+    return {
+        email: email,
+        username: username,
+        token: bcrypt.hashSync(token, 10),
+    };
 };
 
 export { LoginHandler };

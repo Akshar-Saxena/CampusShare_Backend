@@ -1,6 +1,7 @@
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../constants/firebase.js";
 import { v4 } from "uuid";
+import bcrypt from "bcryptjs";
 
 const SignUpHandler = async (data) => {
     let flag = true;
@@ -21,7 +22,7 @@ const SignUpHandler = async (data) => {
         return {
             email: data.email,
             username: data.username,
-            token: token,
+            token: bcrypt.hashSync(token, 10),
         };
     } else {
         return { message: "Email already exists" };

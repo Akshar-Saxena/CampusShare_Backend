@@ -1,12 +1,13 @@
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../constants/firebase.js";
+import bcrypt from "bcryptjs";
 
 const DetailsHandler = async (data) => {
     let flag = false;
     let email, username;
     const users = await getDocs(collection(db, "users"));
     users.forEach((element) => {
-        if (element.data().id == data.id) {
+        if (bcrypt.compareSync(element.data().id, data.id)) {
             flag = true;
             email = element.data().email;
             username = element.data().username;
