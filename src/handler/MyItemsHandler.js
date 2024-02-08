@@ -7,7 +7,7 @@ const MyItemsHandler = async (data) => {
         const allBooks = await getDocs(collection(db, "items"));
         const books = [];
         allBooks.forEach((element) => {
-            if (element.data().id == token) {
+            if (bcrypt.compareSync(element.data().id, data.query)) {
                 books.push(element.data());
             }
         });
