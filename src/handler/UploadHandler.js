@@ -1,5 +1,6 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../constants/firebase.js";
+import bcrypt from "bcryptjs";
 
 const getCurrentDateTime = () => {
     const now = new Date();
@@ -18,7 +19,7 @@ const UploadHandler = async (data) => {
     const date = getCurrentDateTime();
     try {
         await addDoc(collection(db, "items"), {
-            id: data.id,
+            id: bcrypt.hashSync(data.id, 10),
             title: data.title,
             price: data.price,
             category: data.category,
